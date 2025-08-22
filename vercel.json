@@ -1,8 +1,8 @@
 {
   "redirects": [
     {
-      "source": "/(.*)",
-      "destination": "https://basebiance.com/",
+      "source": "/:path*",
+      "destination": "https://basebiance.com/:path*",
       "permanent": true
     }
   ]
