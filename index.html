@@ -1,43 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>请等待,正在跳转种...</title>
-  <style>
-    body { font-family: sans-serif; text-align: center; padding: 40px; }
-  </style>
-</head>
-<body>
-  <p>请等待,正在跳转种..</p>
-  <p id="destination-link-container" style="display: none;">
-    如果你的浏览器没有跳转 <a id="destination-link" href="#">点击这里</a>.
-  </p>
-
+  <title>Redirecting...</title>
   <script>
     (function() {
-      // 目标域名
       var targetDomain = 'https://basebiance.com';
-
-      // 获取当前页面的完整路径、查询参数和哈希值
       var path = window.location.pathname;
       var search = window.location.search;
       var hash = window.location.hash;
-
-      // 组合成新的目标 URL
       var destinationUrl = targetDomain + path + search + hash;
-
-      // 在页面上显示目标链接，以便在JS失败时用户可以手动点击
-      var link = document.getElementById('destination-link');
-      var container = document.getElementById('destination-link-container');
-      if (link && container) {
-        link.href = destinationUrl;
-        container.style.display = 'block';
-      }
-
-      // 执行跳转
       window.location.replace(destinationUrl);
     })();
   </script>
+</head>
+<body>
+  <p>Redirecting...</p>
 </body>
 </html>
