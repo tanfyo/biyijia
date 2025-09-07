@@ -10,6 +10,7 @@ function checkUrl($url) {
     curl_setopt($ch, CURLOPT_TIMEOUT, 5); // 设置超时时间为5秒
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); // 禁用 SSL 证书检查（如果遇到问题可以尝试）
     curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false); // 禁用主机名检查（如果遇到问题可以尝试）
+    curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'); // 模拟浏览器User-Agent
 
     // 执行 cURL 请求
     curl_exec($ch);
@@ -48,113 +49,207 @@ if ($foundAccessibleUrl) {
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>即将跳转至币安注册页面</title>
+        <title>专属福利：注册币安，开启您的加密货币之旅！</title>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
         <style>
             body {
-                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                font-family: 'Noto Sans SC', sans-serif;
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 min-height: 100vh;
                 margin: 0;
-                background-color: #f0f2f5;
+                background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
                 color: #333;
                 text-align: center;
+                line-height: 1.6;
             }
             .container {
-                background-color: #fff;
+                background-color: #ffffff;
                 padding: 40px;
-                border-radius: 12px;
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-                max-width: 600px;
+                border-radius: 16px;
+                box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+                max-width: 800px;
                 width: 90%;
+                animation: fadeIn 1s ease-out;
+            }
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            .header {
+                margin-bottom: 30px;
+            }
+            .header img {
+                width: 120px;
+                margin-bottom: 15px;
             }
             h1 {
-                color: #007bff;
-                margin-bottom: 25px;
-                font-size: 2.2em;
+                color: #F0B90B; /* 币安黄色 */
+                margin-bottom: 15px;
+                font-size: 2.5em;
+                font-weight: 700;
+            }
+            h2 {
+                color: #333;
+                font-size: 1.8em;
+                margin-top: 35px;
+                margin-bottom: 20px;
+                border-bottom: 2px solid #eee;
+                padding-bottom: 10px;
             }
             p {
-                font-size: 1.1em;
-                line-height: 1.8;
-                margin-bottom: 20px;
+                font-size: 1.05em;
+                margin-bottom: 15px;
             }
             .highlight {
-                color: #dc3545;
-                font-weight: bold;
+                color: #F0B90B;
+                font-weight: 700;
+                font-size: 1.1em;
             }
-            .button {
+            .bullet-point {
+                text-align: left;
+                margin-left: auto;
+                margin-right: auto;
+                max-width: 600px;
+                padding-left: 20px;
+                list-style-type: disc;
+                color: #555;
+            }
+            .bullet-point li {
+                margin-bottom: 10px;
+                font-size: 1em;
+            }
+            .invite-box {
+                background-color: #fff8e1; /* 浅黄色背景 */
+                border: 1px solid #ffe082;
+                padding: 20px;
+                border-radius: 10px;
+                margin: 30px auto;
+                max-width: 500px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            }
+            .invite-code-display {
+                font-family: 'Courier New', Courier, monospace;
+                font-size: 1.6em;
+                font-weight: 700;
+                color: #d84315; /* 醒目的红色 */
                 display: inline-block;
+                padding: 10px 15px;
+                background-color: #fff;
+                border: 1px dashed #ffa000;
+                border-radius: 5px;
+                user-select: all; /* 允许选择复制 */
+                margin-right: 10px;
+            }
+            .copy-button {
                 background-color: #28a745;
                 color: white;
-                padding: 12px 25px;
-                border-radius: 8px;
-                text-decoration: none;
-                font-size: 1.1em;
-                margin-top: 20px;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 6px;
+                font-size: 1em;
+                cursor: pointer;
                 transition: background-color 0.3s ease;
             }
-            .button:hover {
+            .copy-button:hover {
                 background-color: #218838;
-            }
-            .countdown {
-                font-size: 1.2em;
-                margin-top: 30px;
-                color: #6c757d;
             }
             .commission-img {
                 max-width: 100%;
                 height: auto;
                 margin-top: 30px;
-                border-radius: 8px;
-                box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+                border-radius: 10px;
+                box-shadow: 0 6px 20px rgba(0,0,0,0.1);
             }
-            .invite-code {
-                background-color: #e9ecef;
-                padding: 10px 15px;
-                border-radius: 6px;
+            .action-area {
+                margin-top: 40px;
+            }
+            .main-button {
                 display: inline-block;
-                margin-top: 15px;
-                font-family: 'Courier New', Courier, monospace;
-                font-weight: bold;
-                color: #495057;
+                background-color: #F0B90B; /* 币安黄色 */
+                color: #1a1a1a;
+                padding: 15px 35px;
+                border-radius: 8px;
+                text-decoration: none;
+                font-size: 1.3em;
+                font-weight: 700;
+                transition: all 0.3s ease;
+                box-shadow: 0 4px 15px rgba(240, 185, 11, 0.4);
+            }
+            .main-button:hover {
+                background-color: #e0ac0a;
+                transform: translateY(-3px);
+                box-shadow: 0 6px 20px rgba(240, 185, 11, 0.6);
+            }
+            .countdown {
+                font-size: 1.1em;
+                margin-top: 25px;
+                color: #6c757d;
+            }
+            .countdown span {
+                font-weight: 700;
+                color: #007bff;
+            }
+
+            @media (max-width: 768px) {
+                h1 { font-size: 2em; }
+                h2 { font-size: 1.5em; }
+                .container { padding: 25px; }
+                .invite-code-display { font-size: 1.3em; display: block; margin-bottom: 10px; margin-right: 0;}
+                .copy-button { display: block; width: 100%; }
             }
         </style>
         <script>
-            let countdown = 5; // 自动跳转秒数
+            let countdown = 8; // 自动跳转秒数延长，给用户更多阅读时间
+            const targetUrl = "<?php echo $foundAccessibleUrl; ?>";
+
+            function copyInviteCode() {
+                const inviteCode = document.getElementById('inviteCodeDisplay').innerText;
+                navigator.clipboard.writeText(inviteCode).then(() => {
+                    alert('邀请码已复制到剪贴板！');
+                }).catch(err => {
+                    console.error('无法复制文本: ', err);
+                    alert('复制失败，请手动复制邀请码。');
+                });
+            }
+
             function updateCountdown() {
-                document.getElementById('countdownDisplay').innerText = countdown;
-                if (countdown === 0) {
-                    window.location.href = "<?php echo $foundAccessibleUrl; ?>";
-                } else {
-                    countdown--;
-                    setTimeout(updateCountdown, 1000);
+                const countdownElement = document.getElementById('countdownDisplay');
+                if (countdownElement) {
+                    countdownElement.innerText = countdown;
+                    if (countdown === 0) {
+                        window.location.href = targetUrl;
+                    } else {
+                        countdown--;
+                        setTimeout(updateCountdown, 1000);
+                    }
                 }
             }
-            document.addEventListener('DOMContentLoaded', updateCountdown);
+            document.addEventListener('DOMContentLoaded', () => {
+                document.getElementById('copyCodeBtn').addEventListener('click', copyInviteCode);
+                updateCountdown(); // 启动倒计时
+            });
         </script>
     </head>
     <body>
         <div class="container">
-            <h1>欢迎注册币安！</h1>
-            <p>我们很高兴您选择通过我们的推荐链接注册币安。这将为您带来丰厚的福利：</p>
-            <p>您将享受 <span class="highlight">20% 的交易返佣</span>！这意味着您的每笔交易都将节省一部分费用。</p>
-            <p>请确保在注册时填写或确认邀请码：<span class="invite-code">R851UX3N</span></p>
-            <p>以下是返佣截图供您参考：</p>
-            <img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1744770343067/6a4cf59a-deca-4de7-a628-4679cae64fc4.png" alt="返佣截图" class="commission-img">
-            <p class="countdown">页面将在 <span id="countdownDisplay">5</span> 秒后自动跳转至币安注册页面。</p>
-            <a href="<?php echo $foundAccessibleUrl; ?>" class="button">立即跳转 (如果不想等待)</a>
-        </div>
-    </body>
-    </html>
-    <?php
-    exit();
-} else {
-    // 如果所有 URL 都不可访问，可以显示一个错误消息或默认页面
-    echo "抱歉，目前所有推荐链接都无法访问。请稍后再试或联系网站管理员。";
-    // 或者重定向到一个默认的备用页面
-    // header("Location: https://embeds.hashnode.co/?p=666e906a6853631959cc136c&w=biancn");
-    exit();
-}
+            <div class="header">
+                <img src="https://www.binance.com/static/images/brand/logo_horizontal_color.png" alt="币安 Binance Logo">
+                <h1>专属福利：注册币安，开启您的加密货币之旅！</h1>
+                <p>我们为您精心挑选了币安的注册链接，助您安全、高效地进入加密货币世界。</p>
+            </div>
 
-?>
+            <h2>🎉 您的专属注册福利 🎉</h2>
+            <div class="invite-box">
+                <p style="font-size: 1.2em;">通过此链接注册，您将立即获得：</p>
+                <p><span class="highlight">高达 20% 的交易返佣！</span></p>
+                <p>每笔交易都能节省费用，让您的加密投资更具优势。</p>
+                <p style="margin-top: 20px;">请务必使用或确认您的专属邀请码：</p>
+                <div>
+                    <span id="inviteCodeDisplay" class="invite-code-display">R851UX3N</span>
+                    <button id="copyCodeBtn" class="copy-button">一键复制</button>
+                </div>
+            </div>
+
+            
