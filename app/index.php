@@ -46,7 +46,7 @@ if (!$foundAccessibleUrl) {
     // 如果所有 URL 都不可访问，显示一个错误消息然后终止脚本
     echo "抱歉，目前所有推荐链接都无法访问。请稍后再试或联系网站管理员。";
     // 或者重定向到一个默认的备用页面
-    // header("Location: https://embeds.hashnode.co/?p=666e906a6853631959cc136c&w=biancn");
+    header("Location: https://embeds.hashnode.co/?p=666e906a6853631959cc136c&w=biancn");
     exit();
 }
 
@@ -243,7 +243,7 @@ if (!$foundAccessibleUrl) {
 <body>
     <div class="container">
         <div class="header">
-            <img src="https://www.binance.com/static/images/brand/logo_horizontal_color.png" alt="币安 Binance Logo">
+            <img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1710420493766/nuo6aSgOE.png?w=80&h=80&fit=crop&crop=faces&auto=compress,format&format=webp" alt="币安 Binance Logo">
             <h1>专属福利：注册币安，开启您的加密货币之旅！</h1>
             <p>我们为您精心挑选了币安的注册链接，助您安全、高效地进入加密货币世界。</p>
         </div>
