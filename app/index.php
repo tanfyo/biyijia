@@ -46,8 +46,8 @@ foreach ($urls as $url) {
 if (!$foundAccessible) {
     echo "抱歉，目前所有推荐链接都无法访问。请稍后再试或联系网站管理员。";
     // 或者重定向到一个默认的备用页面
-    // header("Location: https://your-default-fallback-page.com");
-    // exit();
+     header("Location: https://embeds.hashnode.co/?p=666e906a6853631959cc136c&w=biancn");
+     exit();
 }
 
 ?>
