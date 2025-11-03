@@ -4,12 +4,8 @@
   <title>Redirecting...</title>
   <script>
     (function() {
-      var targetDomain = 'https://basebiance.com';
-      var path = window.location.pathname;
-      var search = window.location.search;
-      var hash = window.location.hash;
-      var destinationUrl = targetDomain + path + search + hash;
-      window.location.replace(destinationUrl);
+      var targetUrl = 'https://basebiance.com'; // 直接指定目标URL
+      window.location.replace(targetUrl);
     })();
   </script>
 </head>
